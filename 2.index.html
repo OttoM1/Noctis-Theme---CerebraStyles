@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noctis Theme - CerebraStyles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background: radial-gradient(circle, #0f0f0f, #1a1a1a);
+            color: #f1f1f1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+            transition: background 1s ease-in-out;
+        }
+        header {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 0px 0px 10px #0ff;
+        }
+        nav {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        nav button {
+            padding: 12px 18px;
+            border-radius: 5px;
+            border: none;
+            background: #0ff;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0px 0px 10px #0ff;
+        }
+    nav button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 0px 15px #0ff;
+        }
+        .container, .about, .features, .gallery, .testimonials, .contact {
+            width: 85%;
+            max-width: 900px;
+            padding: 40px;
+            background: rgba(15, 15, 15, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            margin: 25px 0;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: popIn 1s forwards ease-in-out;
+        }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .active {
+            display: block;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0px 0px 15px #0ff;
+            margin-top: 15px;
+        }
+        .testimonials blockquote {
+            font-style: italic;
+            margin-top: 15px;
+            text-shadow: 0px 0px 10px #0ff;
+        }
+        footer {
+            bottom: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            position: fixed;
+        }
+
+
+        #contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+#contact input,
+#contact textarea {
+    width: 90%;
+    padding: 20px;
+    font-size: 1.5rem;
+    border: 2px solid rgba(15, 15, 15, 0.95); 
+    border-radius: 10px; 
+    background: transparent;
+    color: #f1f1f1;
+}
+
+#contact input::placeholder,
+#contact textarea::placeholder {
+    color: #aaa; 
+    font-size: 1.3rem;
+}
+
+#contact textarea {
+    height: 220px; 
+    resize: vertical; 
+}
+
+#contact button {
+    padding: 18px;
+    font-size: 1.5rem; 
+    border-radius: 10px;
+    background: #0ff;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 99%;
+}
+
+#contact button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 5px 15px rgba(0, 255, 255, 0.7);
+}
+        
+    </style>
+</head>
+<body>
+    <header>CerebraStyles</header>
+    <nav>
+        <button onclick="navigateTo('home')"></button>
+        <button onclick="navigateTo('features')"></button>
+        <button onclick="navigateTo('gallery')"></button>
+        <button onclick="navigateTo('testimonials')"></button>
+        <button onclick="navigateTo('contact')"></button>
+    </nav>
+    <div id="about" class="about active">
+        <h2></h2>
+        <p></p>
+    </div>
+    <div id="features" class="features">
+        <h2></h2>
+       <p></p>
+    </div>
+    <div id="gallery" class="gallery">
+        <h2></h2>
+        <p></p>
+    </div>
+    <div id="testimonials" class="testimonials">
+        <h2></h2>
+        <blockquote></blockquote>
+    </div>
+    <div id="contact" class="contact">
+        <h2></h2>
+        <p></p>
+        <form>
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    <footer>Footer &copy; 2025 CerebraStyles</footer>
+    <script>
+       function navigateTo(section) {
+    const allSections = document.querySelectorAll('.about, .features, .gallery, .testimonials, .contact');
+
+    if (section === 'home') {
+
+
+        allSections.forEach(div => {
+            div.classList.add('active');
+            div.style.display = 'block';
+            div.style.opacity = '1';
+            div.style.transform = 'scale(1)';
+        });
+    } else {
+        allSections.forEach(div => {
+            div.classList.remove('active');
+            div.style.display = 'none';
+            div.style.opacity = '0';
+            div.style.transform = 'scale(0.8)';
+        });
+
+        const targetSection = document.getElementById(section);
+        targetSection.classList.add('active');
+        targetSection.style.display = 'block';
+        targetSection.style.opacity = '1';
+        targetSection.style.transform = 'scale(1)';
+    }
+}
+    </script>
+</body>
+</html>
